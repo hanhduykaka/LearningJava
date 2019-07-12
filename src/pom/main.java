@@ -7,6 +7,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Formatter;
 import java.util.Iterator;
 import java.util.Scanner;
 
@@ -126,26 +127,34 @@ public class main {
 
 		boolean hasNextValueAfter = it.hasNext();
 		System.out.println(value);
-		//		
-		
+		//
+
 		// File
 		File x = new File("D:\\eula.1028.txt");
 		if (x.exists()) {
-			System.out.println(x.getName() + " exists!");
+			Scanner sc = null;
 			try {
-				  Scanner sc = new Scanner (x);
-				  while (sc.hasNext()) {
-				      String a = sc .next();
-				      String b = sc.next ();
-				      System.out.println(a + " " + b);
-				  } 
-				  sc.close ();
+				System.out.println("exist file !");
+				sc = new Scanner(x);
+				while (sc.hasNext()) {
+					System.out.println(sc.next());
+				}
 			} catch (FileNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				System.out.println("Error");
+			} finally {
+				sc.close();
 			}
-		} else {
-			System.out.println("The file does not exist");
+			
+			  try {
+				    Formatter f = new Formatter("D:\\JavaScript\\Java\\ConsoleProj\\src\\pom\\data\\test.txt");
+				    f.format("%s %s %s", "1","John", "Smith \r\n");
+				    f.format("%s %s %s", "2","Amy", "Brown");
+				    f.close();    
+				  } catch (Exception e) {
+				    System.out.println("Error");
+				  }
+			
+			
 		}
 
 	}
